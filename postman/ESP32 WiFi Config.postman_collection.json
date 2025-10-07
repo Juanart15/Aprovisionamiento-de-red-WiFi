@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "331fb8c7-e85a-444e-a331-a2adb4bff78b",
+		"name": "ESP32 WiFi Config",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49062081",
+		"_collection_link": "https://lucasreca-7273338.postman.co/workspace/3a734a45-1e87-4c57-88ef-ea034cdad783/collection/49062081-331fb8c7-e85a-444e-a331-a2adb4bff78b?action=share&source=collection_link&creator=49062081"
+	},
+	"item": [
+		{
+			"name": "GET /status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.2.29/status",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"29"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK - Connected",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.29/status",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"29"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"ssid\": \"MiRedWiFi\",\n  \"status\": \"connected\"\n}"
+				},
+				{
+					"name": "200 OK - Disconnected",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.29/status",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"29"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"ssid\": \"\",\n  \"status\": \"disconnected\"\n}"
+				}
+			]
+		},
+		{
+			"name": "POST /config",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ssid\": \"MiRedWiFi\",\n  \"password\": \"12345678\"\n}"
+				},
+				"url": {
+					"raw": "http://192.168.2.29/config",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"29"
+					],
+					"path": [
+						"config"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK - Credenciales recibidas",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssid\": \"MiRedWiFi\",\n  \"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "http://192.168.2.29/config",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"29"
+							],
+							"path": [
+								"config"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"message\": \"Credenciales recibidas correctamente\",\n  \"status\": \"reconnecting\"\n}"
+				},
+				{
+					"name": "400 Bad Request - Faltan parámetros",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssid\": \"MiRedWiFi\",\n  \"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "http://192.168.2.29/config",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"29"
+							],
+							"path": [
+								"config"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"Faltan parámetros: ssid o password\"\n}"
+				}
+			]
+		},
+		{
+			"name": "POST /reset",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.2.29/reset",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"29"
+					],
+					"path": [
+						"reset"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK - Reset exitoso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://192.168.2.29/reset",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"29"
+							],
+							"path": [
+								"reset"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"message\": \"Credenciales eliminadas. El dispositivo ha vuelto al modo AP.\"\n}"
+				},
+				{
+					"name": "500 Internal Error - Fallo al borrar EEPROM",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://192.168.2.29/reset",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"29"
+							],
+							"path": [
+								"reset"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"error\": \"No se pudo borrar la memoria EEPROM\"\n}"
+				}
+			]
+		}
+	]
+}
